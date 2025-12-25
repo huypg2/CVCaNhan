@@ -1,11 +1,156 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-    <title>CV Của Huy</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Cá Nhân - Huy Pham</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 1. CÀI ĐẶT CHUNG */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden; /* Tránh thanh cuộn ngang */
+        }
+
+        /* 2. THANH MENU (NAVIGATION) */
+        nav {
+            display: flex;
+            justify-content: flex-end; /* Đẩy menu sang phải */
+            padding: 30px 50px;
+            position: fixed; /* Ghim menu lên đầu */
+            width: 100%;
+            background: white;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            margin-left: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #000;
+            font-weight: bold;
+        }
+
+        /* 3. PHẦN CHÍNH (HERO SECTION) */
+        .hero-container {
+            display: flex;
+            height: 100vh; /* Chiều cao bằng 100% màn hình */
+            align-items: center; /* Căn giữa theo chiều dọc */
+            padding-top: 60px; /* Chừa chỗ cho menu */
+        }
+
+        /* Cột bên trái: Chữ */
+        .hero-text {
+            width: 50%;
+            padding-left: 10%; /* Canh lề trái */
+            padding-right: 50px;
+        }
+
+        .my-name {
+            font-size: 18px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            display: block;
+            color: #555;
+        }
+
+        .my-name span {
+            font-weight: 300; /* Làm chữ mỏng đi cho nghệ thuật */
+        }
+
+        .slogan {
+            font-size: 60px; /* Kích thước chữ to */
+            font-weight: 900; /* Chữ siêu đậm */
+            line-height: 1.1;
+            text-transform: uppercase;
+            color: #222;
+        }
+
+        .highlight-bg {
+            background-color: #333;
+            color: white;
+            padding: 0 10px; /* Tạo hiệu ứng nền đen chữ trắng */
+        }
+
+        /* Cột bên phải: Ảnh */
+        .hero-image {
+            width: 50%;
+            height: 100%;
+            /* Thay thế hình ảnh ở đây */
+            background-image: url('avatar.jpg'); 
+            background-size: cover; /* Ảnh phủ kín khung */
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* 4. RESPONSIVE (Làm đẹp trên điện thoại) */
+        @media (max-width: 768px) {
+            .hero-container {
+                flex-direction: column-reverse; /* Đảo ngược: ảnh lên trên, chữ xuống dưới */
+                height: auto;
+            }
+            .hero-text, .hero-image {
+                width: 100%;
+            }
+            .hero-image {
+                height: 400px;
+            }
+            .hero-text {
+                padding: 50px 20px;
+            }
+            .slogan {
+                font-size: 40px;
+            }
+            nav {
+                justify-content: center;
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
-<body style="font-family: sans-serif; text-align: center; margin-top: 50px;">
-    <h1>Xin chào, tôi là Huy</h1>
-    <p>Đây là trang CV cá nhân của tôi trên GitHub.</p>
-    </body>
+<body>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Resume</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <div class="hero-container">
+        <div class="hero-text">
+            <span class="my-name">HUY PHAM //</span>
+            <h1 class="slogan">
+                Work Hard<br>
+                In Silence<br>
+                Let <span class="highlight-bg">Success</span><br>
+                Make Noise
+            </h1>
+        </div>
+
+        <div class="hero-image">
+            </div>
+    </div>
+
+</body>
 </html>
