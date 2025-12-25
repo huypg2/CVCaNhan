@@ -20,7 +20,8 @@
         
         <h1 style="font-size: 36px; margin-bottom: 10px;">Xây dựng Web Server từ con số 0</h1>
         <div style="color: #4e60ff; font-weight: 600; margin-bottom: 30px;">C++ • SOCKET • HTTP PROTOCOL</div>
-        <img src="project2.jpg" alt="Project Banner" style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 40px;">
+        
+        <img src="https://placehold.co/800x400/282c34/ffffff?text=C%2B%2B+HTTP+Server+Console" alt="Project Banner" style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 40px;">
 
         <h2 class="section-title" style="text-align: left; margin-bottom: 20px; font-size: 24px;">1. Giới thiệu</h2>
         <p style="margin-bottom: 20px;">Dự án này thử thách viết một Web Server đơn giản bằng C++ mà không sử dụng các framework như Apache hay Nginx. Mục tiêu là hiểu rõ cách trình duyệt và server "nói chuyện" với nhau qua giao thức HTTP.</p>
@@ -39,7 +40,6 @@ int main() {
     int opt = 1;
     int addrlen = sizeof(address);
     
-    // Tạo socket file descriptor
     server_fd = socket(AF_INET, SOCK_STREAM, 0);
     
     address.sin_family = AF_INET;
@@ -57,7 +57,6 @@ int main() {
         read(new_socket, buffer, 1024);
         printf("\nRequest: %s\n", buffer);
         
-        // Phản hồi HTTP chuẩn
         char *hello = "HTTP/1.1 200 OK\nContent-Type: text/plain\nContent-Length: 12\n\nHello world!";
         write(new_socket, hello, strlen(hello));
         close(new_socket);
