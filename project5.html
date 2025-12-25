@@ -20,7 +20,8 @@
 
         <h1 style="font-size: 36px; margin-bottom: 10px;">Remote Command Line</h1>
         <div style="color: #4e60ff; font-weight: 600; margin-bottom: 30px;">PYTHON • SUBPROCESS • SOCKET</div>
-        <img src="project5.jpg" alt="Project Banner" style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 40px;">
+        
+        <img src="https://placehold.co/800x400/27ae60/ffffff?text=Remote+Command+Line" alt="Project Banner" style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 40px;">
 
         <h2 class="section-title" style="text-align: left; margin-bottom: 20px; font-size: 24px;">1. Giới thiệu</h2>
         <p style="margin-bottom: 20px;">Mô phỏng chức năng của Telnet/SSH. Client gửi câu lệnh (ví dụ: `dir`, `ipconfig`), Server thực thi lệnh đó trên máy của mình và trả kết quả về cho Client xem.</p>
@@ -40,10 +41,7 @@ while True:
     if command.lower() == 'exit':
         break
     
-    # Thực thi lệnh trên hệ điều hành
     output = subprocess.getoutput(command)
-    
-    # Gửi kết quả về
     client.send(output.encode())
 
 client.close()
