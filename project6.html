@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packet Sniffer - Chi tiết dự án</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo">Huy Pham.</a>
+            <nav class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html" class="active">Projects</a><a href="contact.html">Contact</a></nav>
+        </div>
+    </header>
+    <main class="container" style="margin-top: 40px; margin-bottom: 80px;">
+        <a href="projects.html" style="display: inline-block; margin-bottom: 20px; color: #666;">← Quay lại danh sách</a>
+
+        <h1 style="font-size: 36px; margin-bottom: 10px;">Network Packet Sniffer</h1>
+        <div style="color: #4e60ff; font-weight: 600; margin-bottom: 30px;">PYTHON • RAW SOCKET • ANALYSIS</div>
+        <img src="project6.jpg" alt="Project Banner" style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 40px;">
+
+        <h2 class="section-title" style="text-align: left; margin-bottom: 20px; font-size: 24px;">1. Giới thiệu</h2>
+        <p style="margin-bottom: 20px;">Sử dụng Raw Socket để lắng nghe toàn bộ lưu lượng mạng đi qua Card mạng. Phân tích thủ công các Byte trong Header của gói tin IP để lấy ra IP nguồn, IP đích và giao thức.</p>
+
+        <h2 class="section-title" style="text-align: left; margin-bottom: 20px; font-size: 24px;">2. Code Demo (Phân tích IP Header)</h2>
+        <pre><code class="language-python">
+import socket
+import struct
+import sys
+
+# Tạo raw socket (cần quyền Admin/Root)
+try:
+    s = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_IP)
+    s.bind(("192.168.1.5", 0)) # IP máy mình
+    s.setsockopt(socket.IPPROTO_IP, socket.IP_HDRINCL, 1)
+    s.ioctl(socket.SIO_RCVALL, socket.RCVALL_ON) # Bật chế độ Promiscuous trên Windows
+except socket.error as msg:
+    print('Socket error: ' + str(msg))
+    sys.exit()
+
+while True:
+    packet = s.recvfrom(65565)
+    packet = packet[0]
+    
+    # Lấy 20 byte đầu tiên là IP Header
+    ip_header = packet[0:20]
+    
+    # Unpack theo cấu trúc IP Header
+    iph = struct.unpack('!BBHHHBBH4s4s', ip_header)
+    
+    version_ihl = iph[0]
+    version = version_ihl >> 4
+    ttl = iph[5]
+    protocol = iph[6]
+    s_addr = socket.inet_ntoa(iph[8])
+    d_addr = socket.inet_ntoa(iph[9])
+    
+    print(f'Source IP: {s_addr} -> Dest IP: {d_addr} | Protocol: {protocol}')
+        </code></pre>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>
