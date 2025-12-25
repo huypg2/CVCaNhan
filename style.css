@@ -1,12 +1,11 @@
-/* === style.css - Phiên bản Final cho Khang Blog UI === */
+/* === style.css - Phiên bản Final (Đã sửa layout About) === */
 :root {
     --primary: #4e60ff;       /* Màu xanh chủ đạo */
-    --primary-light: #f0f4ff; /* Màu nền nhạt cho nút/tag */
-    --dark: #1a1a1a;
-    --gray: #666;
-    --white: #ffffff;         /* Thêm biến màu trắng để tránh lỗi */
-    --light-gray: #f9f9f9;    /* Màu nền trang */
-    --border: #eef2f6;        /* Màu viền thẻ */
+    --primary-light: #eff4ff; /* Màu nền cực nhạt cho thẻ Tag */
+    --dark: #111827;          /* Màu chữ đen đậm (giống mẫu) */
+    --gray: #4b5563;          /* Màu chữ xám dịu */
+    --white: #ffffff;
+    --border: #e5e7eb;
     font-family: 'Inter', sans-serif;
 }
 
@@ -17,9 +16,8 @@ a { text-decoration: none; color: inherit; transition: 0.3s; }
 ul { list-style: none; }
 img { max-width: 100%; display: block; }
 
-/* LAYOUT */
+/* LAYOUT & CONTAINER */
 .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-section { margin-bottom: 80px; }
 
 /* HEADER / MENU */
 header { background: #fff; position: fixed; top: 0; width: 100%; z-index: 1000; border-bottom: 1px solid var(--border); }
@@ -28,13 +26,10 @@ header { background: #fff; position: fixed; top: 0; width: 100%; z-index: 1000; 
 .nav-links a { margin-left: 35px; font-size: 15px; font-weight: 600; color: var(--dark); opacity: 0.7; }
 .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--primary); }
 
-/* CÁC THÀNH PHẦN CHUNG */
-.section-title { text-align: center; font-size: 32px; font-weight: 800; margin-bottom: 50px; color: var(--dark); }
-
-/* GRID SYSTEM */
+/* GRID SYSTEM CHO PROJECTS */
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
 
-/* === CARD STYLE (Giao diện thẻ dự án giống mẫu) === */
+/* === CARD STYLE (PROJECTS) === */
 .card {
     background: #fff;
     border-radius: 16px;
@@ -43,83 +38,48 @@ header { background: #fff; position: fixed; top: 0; width: 100%; z-index: 1000; 
     transition: transform 0.3s, box-shadow 0.3s;
     display: flex; flex-direction: column;
 }
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-    border-color: var(--primary-light);
-}
-
-.card-image {
-    height: 200px;
-    width: 100%;
-    object-fit: cover;
-}
-
-.card-content {
-    padding: 25px;
-    flex-grow: 1;
-    display: flex; flex-direction: column;
-}
-
-.card-meta {
-    font-size: 12px;
-    color: var(--primary);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
-}
-
+.card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); border-color: var(--primary-light); }
+.card-image { height: 200px; width: 100%; object-fit: cover; }
+.card-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+.card-meta { font-size: 12px; color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
 .card h3 { font-size: 20px; margin-bottom: 15px; line-height: 1.4; color: var(--dark); }
 .card p { font-size: 15px; color: var(--gray); margin-bottom: 25px; flex-grow: 1; }
-
-.card-btn {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    background-color: var(--primary-light);
-    color: var(--primary);
-    text-align: center;
-    font-weight: 700;
-    font-size: 14px;
-    border-radius: 12px;
-}
+.card-btn { display: block; width: 100%; padding: 15px; background-color: var(--primary-light); color: var(--primary); text-align: center; font-weight: 700; font-size: 14px; border-radius: 12px; }
 .card-btn:hover { background-color: var(--primary); color: #fff; }
 
-/* ========================================= */
-/* === PHẦN MỚI THÊM: ABOUT PAGE STYLES === */
-/* ========================================= */
+/* ================================================= */
+/* === PHẦN QUAN TRỌNG: STYLE CHO TRANG ABOUT === */
+/* ================================================= */
 
-/* Bố cục chia 2 cột cho trang About */
+/* 1. Layout Flexbox: Giúp ảnh và chữ nằm ngang hàng */
 .about-wrapper {
-    display: flex;
-    gap: 60px;
-    align-items: flex-start;
+    display: flex;        /* Kích hoạt chế độ dàn trang ngang */
+    gap: 60px;            /* Khoảng cách giữa ảnh và nội dung */
+    align-items: flex-start; /* Căn thẳng hàng bên trên */
     padding-top: 20px;
 }
 
-/* Ảnh đại diện bên trái */
+/* 2. Style cột Ảnh (Bên trái) */
 .about-image {
-    flex-shrink: 0;
-    width: 350px;
+    flex-shrink: 0;       /* Đảm bảo ảnh không bị bóp méo khi màn hình nhỏ */
+    width: 350px;         /* Chiều rộng cố định của ảnh */
 }
 
 .about-image img {
     width: 100%;
     height: auto;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 24px;  /* Bo tròn góc nhiều hơn cho giống mẫu */
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1); /* Đổ bóng mịn */
     object-fit: cover;
 }
 
-/* Phần nội dung bên phải */
+/* 3. Style cột Nội dung (Bên phải) */
 .about-content {
-    flex-grow: 1;
+    flex-grow: 1;         /* Chiếm toàn bộ phần còn lại bên phải */
 }
 
 .profile-name {
-    font-size: 40px; /* Tên to nổi bật */
+    font-size: 36px;
     font-weight: 800;
     color: var(--dark);
     margin-bottom: 20px;
@@ -128,56 +88,68 @@ header { background: #fff; position: fixed; top: 0; width: 100%; z-index: 1000; 
 
 .profile-bio {
     font-size: 16px;
-    line-height: 1.8;
+    line-height: 1.7;
     color: var(--gray);
     margin-bottom: 15px;
 }
 
-/* Tiêu đề mục kỹ năng (có gạch xanh bên trái) */
+/* 4. Khối Kỹ năng (Giống mẫu Khang Blog) */
 .skills-block {
     margin-top: 40px;
 }
 
+/* Tiêu đề có gạch dọc màu xanh */
 .modern-heading {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
     color: var(--dark);
     margin-bottom: 20px;
     padding-left: 15px;
-    border-left: 5px solid var(--primary); /* Điểm nhấn màu xanh */
+    border-left: 4px solid var(--primary); /* Gạch xanh điểm nhấn */
+    line-height: 1;
 }
 
-/* Style cho các thẻ Tag (Kỹ năng/Chứng chỉ) */
+/* Container chứa các thẻ Tag */
 .tags-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    flex-wrap: wrap; /* Tự xuống dòng nếu hết chỗ */
+    gap: 12px;       /* Khoảng cách giữa các thẻ */
 }
 
+/* Style từng thẻ Tag */
 .tag {
-    background-color: var(--primary-light);
-    color: var(--primary);
-    padding: 10px 20px;
-    border-radius: 8px;
+    background-color: var(--primary-light); /* Nền xanh nhạt */
+    color: var(--primary);                  /* Chữ xanh đậm */
+    padding: 10px 18px;
+    border-radius: 8px;                     /* Bo góc nhẹ */
     font-weight: 600;
     font-size: 14px;
-    transition: 0.2s;
+    transition: all 0.2s ease;
 }
 
 .tag:hover {
     background-color: var(--primary);
     color: #fff;
     cursor: default;
+    transform: translateY(-2px); /* Hiệu ứng nổi nhẹ khi di chuột */
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE (Điện thoại) */
 @media (max-width: 768px) {
     .nav-links { display: none; }
     .grid { grid-template-columns: 1fr; }
-    .section-title { font-size: 24px; }
     
-    /* Responsive cho trang About */
-    .about-wrapper { flex-direction: column; gap: 30px; }
-    .about-image { width: 100%; max-width: 100%; }
-    .profile-name { font-size: 32px; }
+    /* Khi màn hình nhỏ, chuyển về dạng cột dọc */
+    .about-wrapper { 
+        flex-direction: column; 
+        gap: 30px; 
+    }
+    .about-image { 
+        width: 100%; 
+        max-width: 400px; 
+        margin: 0 auto; 
+    }
+    .profile-name { font-size: 30px; text-align: center; }
+    .profile-bio { text-align: center; }
+    .skills-block { margin-top: 30px; }
 }
