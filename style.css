@@ -4,6 +4,7 @@
     --primary-light: #f0f4ff; /* Màu nền nhạt cho nút/tag */
     --dark: #1a1a1a;
     --gray: #666;
+    --white: #ffffff;         /* Thêm biến màu trắng để tránh lỗi */
     --light-gray: #f9f9f9;    /* Màu nền trang */
     --border: #eef2f6;        /* Màu viền thẻ */
     font-family: 'Inter', sans-serif;
@@ -37,10 +38,10 @@ header { background: #fff; position: fixed; top: 0; width: 100%; z-index: 1000; 
 .card {
     background: #fff;
     border-radius: 16px;
-    overflow: hidden; /* Để ảnh không bị tràn ra ngoài bo góc */
+    overflow: hidden;
     border: 1px solid var(--border);
     transition: transform 0.3s, box-shadow 0.3s;
-    display: flex; flex-direction: column; /* Để nút luôn nằm dưới cùng */
+    display: flex; flex-direction: column;
 }
 
 .card:hover {
@@ -49,17 +50,15 @@ header { background: #fff; position: fixed; top: 0; width: 100%; z-index: 1000; 
     border-color: var(--primary-light);
 }
 
-/* Phần ảnh thumbnail phía trên thẻ */
 .card-image {
-    height: 200px; /* Chiều cao cố định cho ảnh */
+    height: 200px;
     width: 100%;
-    object-fit: cover; /* Ảnh tự cắt để vừa khung mà không bị méo */
+    object-fit: cover;
 }
 
-/* Phần nội dung bên dưới ảnh */
 .card-content {
     padding: 25px;
-    flex-grow: 1; /* Đẩy nút xuống đáy */
+    flex-grow: 1;
     display: flex; flex-direction: column;
 }
 
@@ -75,7 +74,6 @@ header { background: #fff; position: fixed; top: 0; width: 100%; z-index: 1000; 
 .card h3 { font-size: 20px; margin-bottom: 15px; line-height: 1.4; color: var(--dark); }
 .card p { font-size: 15px; color: var(--gray); margin-bottom: 25px; flex-grow: 1; }
 
-/* Nút bấm "Đọc chi tiết" */
 .card-btn {
     display: block;
     width: 100%;
@@ -89,9 +87,97 @@ header { background: #fff; position: fixed; top: 0; width: 100%; z-index: 1000; 
 }
 .card-btn:hover { background-color: var(--primary); color: #fff; }
 
+/* ========================================= */
+/* === PHẦN MỚI THÊM: ABOUT PAGE STYLES === */
+/* ========================================= */
+
+/* Bố cục chia 2 cột cho trang About */
+.about-wrapper {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+    padding-top: 20px;
+}
+
+/* Ảnh đại diện bên trái */
+.about-image {
+    flex-shrink: 0;
+    width: 350px;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    object-fit: cover;
+}
+
+/* Phần nội dung bên phải */
+.about-content {
+    flex-grow: 1;
+}
+
+.profile-name {
+    font-size: 40px; /* Tên to nổi bật */
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.profile-bio {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--gray);
+    margin-bottom: 15px;
+}
+
+/* Tiêu đề mục kỹ năng (có gạch xanh bên trái) */
+.skills-block {
+    margin-top: 40px;
+}
+
+.modern-heading {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 20px;
+    padding-left: 15px;
+    border-left: 5px solid var(--primary); /* Điểm nhấn màu xanh */
+}
+
+/* Style cho các thẻ Tag (Kỹ năng/Chứng chỉ) */
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tag {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.tag:hover {
+    background-color: var(--primary);
+    color: #fff;
+    cursor: default;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .nav-links { display: none; }
-    .grid { grid-template-columns: 1fr; } /* Điện thoại hiển thị 1 cột */
+    .grid { grid-template-columns: 1fr; }
     .section-title { font-size: 24px; }
+    
+    /* Responsive cho trang About */
+    .about-wrapper { flex-direction: column; gap: 30px; }
+    .about-image { width: 100%; max-width: 100%; }
+    .profile-name { font-size: 32px; }
 }
