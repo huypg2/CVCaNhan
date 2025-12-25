@@ -1,58 +1,274 @@
-/* === THÊM VÀO CUỐI FILE style.css === */
+/* =========================================
+   STYLE.CSS - BẢN ĐẦY ĐỦ (FULL)
+   (Bao gồm: Layout chung, Header, Grid Project, Modal Blog)
+   ========================================= */
 
-/* Nền đen mờ che phía sau */
-.modal {
-    display: none; /* Mặc định ẩn đi */
-    position: fixed;
-    z-index: 2000; /* Nằm trên cùng */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.8); /* Màu đen độ mờ 80% */
-    overflow: auto; /* Cho phép cuộn nếu nội dung dài */
-    padding-top: 50px;
+/* --- 1. CẤU HÌNH CHUNG --- */
+:root {
+    --primary: #4e60ff;       /* Màu xanh chủ đạo */
+    --primary-light: #f0f4ff; /* Màu nền nhạt */
+    --dark: #111827;          /* Màu chữ đen */
+    --gray: #6b7280;          /* Màu chữ xám */
+    --bg-light: #f9fafb;      /* Màu nền trang */
+    --border: #e5e7eb;        /* Màu đường viền */
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-/* Hộp nội dung trắng ở giữa */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-light);
+    color: var(--dark);
+    line-height: 1.6;
+    padding-top: 80px; /* Chừa chỗ cho thanh menu */
+}
+
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+/* --- 2. LAYOUT & CONTAINER --- */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 50px;
+    color: var(--dark);
+}
+
+/* --- 3. HEADER (MENU) --- */
+header {
+    background: #fff;
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.nav-links a {
+    margin-left: 35px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gray);
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--primary);
+}
+
+/* --- 4. GRID SYSTEM (DỰ ÁN) --- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+/* --- 5. CARD STYLE (THẺ BÀI) --- */
+.card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex; flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-light);
+}
+
+.card-image {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 25px;
+    display: flex; flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-meta {
+    font-size: 12px;
+    color: var(--primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--dark);
+    line-height: 1.4;
+}
+
+.card p {
+    font-size: 15px;
+    color: var(--gray);
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.card-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-light);
+    color: var(--primary);
+    text-align: center;
+    font-weight: 600;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.card-btn:hover {
+    background-color: var(--primary);
+    color: #fff;
+}
+
+/* --- 6. MODAL BLOG (CHI TIẾT BÀI VIẾT) --- */
+.modal {
+    display: none; /* Mặc định ẩn */
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px); /* Hiệu ứng mờ nền */
+    overflow-y: auto;
+    padding: 20px 0;
+}
+
 .modal-content {
     background-color: #fff;
-    margin: auto;
-    padding: 40px;
-    border-radius: 12px;
-    width: 80%;
-    max-width: 900px;
+    margin: 20px auto;
+    padding: 0;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 800px;
     position: relative;
-    animation: zoomIn 0.3s; /* Hiệu ứng phóng to */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    animation: zoomIn 0.3s ease-out;
+    overflow: hidden;
 }
 
-/* Nút đóng (Dấu X) */
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: #aaa;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.close-btn:hover { color: #000; }
-
-/* Hiệu ứng Zoom khi mở */
 @keyframes zoomIn {
-    from {transform: scale(0.8); opacity: 0;}
-    to {transform: scale(1); opacity: 1;}
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
 }
 
-/* Code block trong modal */
+/* Ảnh Banner trong Modal */
+.modal-banner {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+/* Nội dung bài viết */
+.modal-body {
+    padding: 40px 50px;
+    font-size: 17px;
+    color: #374151;
+    line-height: 1.8;
+}
+
+.article-meta {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.article-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: #111;
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+
+/* Các tiêu đề con (H2) có gạch xanh */
+.article-heading {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding-left: 15px;
+    border-left: 4px solid var(--primary);
+}
+
+.modal-body p { margin-bottom: 20px; }
+.modal-body ul { margin-bottom: 20px; padding-left: 20px; list-style-type: disc; }
+.modal-body li { margin-bottom: 8px; }
+
+/* Khung Code (Dark Mode) */
 pre {
-    background: #282c34;
-    color: #abb2bf;
-    padding: 15px;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 20px;
     border-radius: 8px;
     overflow-x: auto;
-    font-family: 'Consolas', monospace;
-    margin-top: 20px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 30px 0;
+    border: 1px solid #333;
+}
+
+/* Nút Đóng (X) */
+.close-btn {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+    z-index: 10;
+}
+
+.close-btn:hover { background: #000; }
+
+/* --- 7. RESPONSIVE --- */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .grid { grid-template-columns: 1fr; }
+    .modal-banner { height: 200px; }
+    .modal-body { padding: 25px; }
+    .article-title { font-size: 26px; }
 }
