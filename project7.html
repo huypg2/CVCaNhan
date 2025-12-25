@@ -20,7 +20,8 @@
 
         <h1 style="font-size: 36px; margin-bottom: 10px;">DNS Resolver Tool</h1>
         <div style="color: #4e60ff; font-weight: 600; margin-bottom: 30px;">PYTHON • UDP • DNS PROTOCOL</div>
-        <img src="project7.jpg" alt="Project Banner" style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 40px;">
+        
+        <img src="https://placehold.co/800x400/16a085/ffffff?text=DNS+Query+Packet+Structure" alt="Project Banner" style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 40px;">
 
         <h2 class="section-title" style="text-align: left; margin-bottom: 20px; font-size: 24px;">1. Giới thiệu</h2>
         <p style="margin-bottom: 20px;">Tự xây dựng một gói tin DNS Query (định dạng Hex) để hỏi Google DNS (8.8.8.8) địa chỉ IP của một tên miền bất kỳ. Giúp hiểu sâu về cấu trúc gói tin UDP và DNS.</p>
@@ -31,32 +32,24 @@ import socket
 import struct
 
 def build_dns_query(domain):
-    # Transaction ID (ngẫu nhiên)
     transaction_id = b'\xaa\xbb'
-    # Flags: Standard query
     flags = b'\x01\x00'
-    # Questions: 1
     questions = b'\x00\x01'
-    # Answer RRs, Authority RRs, Additional RRs: 0
     others = b'\x00\x00\x00\x00\x00\x00'
     
-    # Mã hóa tên miền (VD: google.com -> 6google3com0)
     qname = b''
     for part in domain.split('.'):
         qname += bytes([len(part)]) + part.encode()
     qname += b'\x00'
     
-    # Type A (Host Address) = 1, Class IN = 1
     qtype_qclass = b'\x00\x01\x00\x01'
     
     return transaction_id + flags + questions + others + qname + qtype_qclass
 
-# Gửi query tới Google DNS
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 query = build_dns_query("www.google.com")
 sock.sendto(query, ("8.8.8.8", 53))
 
-# Nhận phản hồi
 response, _ = sock.recvfrom(1024)
 print("Nhận được phản hồi Raw (Hex):", response.hex())
         </code></pre>
