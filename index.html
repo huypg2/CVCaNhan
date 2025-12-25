@@ -3,111 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phạm Gia Huy - Portfolio</title>
+    <title>Trang chủ - Phạm Gia Huy</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <header>
         <div class="container navbar">
-            <a href="#" class="logo">Huy Pham.</a>
+            <a href="index.html" class="logo">Huy Pham.</a>
             <nav class="nav-links">
-                <a href="#" class="active">Home</a>
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
+                <a href="index.html" class="active">Home</a> <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
             </nav>
         </div>
     </header>
 
-    <section class="hero">
+    <section class="hero" style="min-height: 80vh; display: flex; align-items: center;">
         <div class="container">
             <img src="avatar.jpg" alt="Phạm Gia Huy" class="avatar">
-            <h1>Phạm Gia Huy</h1>
-            <p>Chào mừng đến với Portfolio của mình. Mình là sinh viên chuyên ngành Công Nghệ Phần Mềm với niềm đam mê lớn về Lập trình Backend và Hệ thống mạng.</p>
+            <h1>Xin chào, mình là Phạm Gia Huy 👋</h1>
+            <p>Sinh viên chuyên ngành Công Nghệ Phần Mềm | Đam mê Backend & Network.</p>
             
             <div class="tag-container">
-                <span class="tag">Python / C++</span>
+                <span class="tag">Python</span>
                 <span class="tag">Network Socket</span>
                 <span class="tag">Cisco Packet Tracer</span>
-                <span class="tag">HTML / CSS / JS</span>
             </div>
             
-            <br>
-            <a href="#contact" class="btn btn-primary">Kết nối với mình →</a>
+            <div style="margin-top: 30px;">
+                <a href="about.html" class="btn btn-primary">Xem hồ sơ năng lực →</a>
+                <a href="contact.html" class="btn" style="background: white; border: 1px solid #ccc; margin-left: 10px;">Liên hệ</a>
+            </div>
         </div>
     </section>
-
-    <div class="container">
-        
-        <section id="about">
-            <h2 class="section-title">Chứng chỉ & Học vấn</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Network Basic</h3>
-                    <p>Kiến thức nền tảng về mạng máy tính, các thiết bị mạng và mô hình kết nối cơ bản.</p>
-                    <a href="#" class="btn">Xem Chứng Chỉ</a>
-                </div>
-                <div class="card">
-                    <h3>IT Essentials</h3>
-                    <p>Nhập môn công nghệ thông tin: Phần cứng máy tính, cài đặt phần mềm và xử lý sự cố.</p>
-                    <a href="#" class="btn">Xem Chứng Chỉ</a>
-                </div>
-                <div class="card">
-                    <h3>CCNA: Switching & Routing</h3>
-                    <p>Nâng cao về hệ điều hành, quản trị hệ thống mạng và cấu hình Router/Switch Cisco.</p>
-                    <a href="#" class="btn">Xem Chứng Chỉ</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects">
-            <h2 class="section-title">Dự án & Kiến thức chia sẻ</h2>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-meta">CODE • 20/12/2025</div>
-                    <h3>Socket Programming với Python</h3>
-                    <p>Hướng dẫn từ A-Z cách tạo mô hình Client-Server đầu tiên sử dụng thư viện socket.</p>
-                    <a href="#" class="btn">Đọc chi tiết →</a>
-                </div>
-
-                <div class="card">
-                    <div class="card-meta">TOOLS • 18/12/2025</div>
-                    <h3>Phân tích gói tin với Wireshark</h3>
-                    <p>Học cách sử dụng Wireshark để bắt gói tin, debug lỗi mạng và hiểu sâu về giao thức TCP/IP.</p>
-                    <a href="#" class="btn">Đọc chi tiết →</a>
-                </div>
-
-                <div class="card">
-                    <div class="card-meta">THEORY • 15/12/2025</div>
-                    <h3>Mô hình OSI vs TCP/IP</h3>
-                    <p>Tại sao trường học dạy OSI 7 tầng nhưng thực tế lại dùng TCP/IP 4 tầng? Cùng tìm hiểu.</p>
-                    <a href="#" class="btn">Đọc chi tiết →</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" style="text-align: center; margin-bottom: 100px;">
-            <h2 class="section-title" style="border: none; padding: 0;">Kết nối với Huy</h2>
-            <p style="color: #666; margin-bottom: 30px;">Bạn có thể tìm thấy mình ở các kênh dưới đây. Rất vui được trao đổi!</p>
-            
-            <div class="grid" style="max-width: 800px; margin: 0 auto;">
-                <div class="card" style="align-items: center; text-align: center;">
-                    <h3 style="color: #1877F2;">Facebook</h3>
-                    <p>Theo dõi hoạt động cá nhân</p>
-                    <a href="#" class="btn" style="background: #1877F2; color: white;">Truy cập Profile</a>
-                </div>
-
-                <div class="card" style="align-items: center; text-align: center;">
-                    <h3 style="color: #000;">GitHub</h3>
-                    <p>Xem source code các dự án</p>
-                    <a href="#" class="btn" style="background: #000; color: white;">Xem Repos</a>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
 </body>
 </html>
