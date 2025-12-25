@@ -1,201 +1,63 @@
-<div id="modal1" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự án - Phạm Gia Huy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo">Huy Pham.</a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html" class="active">Projects</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="margin-top: 60px;">
+        <h1 class="section-title">Kiến Thức Lập Trình Mạng</h1>
+
+        <div class="grid">
             
-            <img src="project1.jpg" class="modal-banner">
+            <article class="card">
+                <img src="project1.jpg" alt="Socket Programming" class="card-image">
+                <div class="card-content">
+                    <div class="card-meta">CODE • 20/12/2025</div>
+                    <h3>Socket Programming cơ bản với Python: Hướng dẫn từ A-Z</h3>
+                    <p>Khám phá cách tạo mô hình Client-Server đầu tiên của bạn sử dụng thư viện socket trong Python.</p>
+                    <a href="#" class="card-btn">Đọc chi tiết →</a>
+                </div>
+            </article>
 
-            <div class="modal-body">
-                <div class="article-meta">CODE • 20/12/2025</div>
-                <h1 class="article-title">Socket Programming cơ bản với Python: Hướng dẫn từ A-Z</h1>
-                <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+            <article class="card">
+                <img src="project2.jpg" alt="Wireshark Analysis" class="card-image">
+                <div class="card-content">
+                    <div class="card-meta">TOOLS • 18/12/2025</div>
+                    <h3>Phân tích gói tin với Wireshark: Soi từng bit dữ liệu</h3>
+                    <p>Học cách sử dụng Wireshark để bắt gói tin, debug lỗi mạng và hiểu sâu về giao thức TCP/IP.</p>
+                    <a href="#" class="card-btn">Đọc chi tiết →</a>
+                </div>
+            </article>
 
-                <p>Lập trình Socket là kỹ năng cốt lõi mà bất kỳ kỹ sư hệ thống hay lập trình viên Backend nào cũng cần phải nắm vững. Nó là nền tảng của mọi giao tiếp trên Internet ngày nay.</p>
-                <p>Trong bài viết này, chúng ta sẽ không chỉ dừng lại ở lý thuyết. Mình sẽ hướng dẫn các bạn từng bước để xây dựng một ứng dụng chat đơn giản giữa hai máy tính.</p>
-
-                <h2 class="article-heading">1. Socket là gì? Bản chất kết nối</h2>
-                <p>Hãy tưởng tượng Socket giống như một cái "ổ cắm" điện thoại. Để hai người nói chuyện được, mỗi người cần một cái điện thoại (Socket) và đường dây kết nối (Network).</p>
-                <ul>
-                    <li><strong>IP Address:</strong> Địa chỉ nhà của máy tính (Ví dụ: 192.168.1.5).</li>
-                    <li><strong>Port Number:</strong> Số hiệu cửa để vào đúng ứng dụng (Ví dụ: 80 cho Web, 22 cho SSH).</li>
-                </ul>
-
-                <h2 class="article-heading">2. Quy trình "Bắt tay" (The Handshake)</h2>
-                <p>Trước khi dữ liệu được gửi đi, Client và Server phải thiết lập kết nối qua giao thức TCP:</p>
-                <ul>
-                    <li><strong>Server:</strong> Tạo socket, gắn cổng (Bind) và lắng nghe (Listen).</li>
-                    <li><strong>Client:</strong> Tạo socket và gửi yêu cầu kết nối (Connect).</li>
-                    <li><strong>Accept:</strong> Server chấp nhận và tạo ra "đường ống" riêng để giao tiếp.</li>
-                </ul>
-
-                <h2 class="article-heading">3. Thực hành: Viết Server bằng Python</h2>
-                <p>Dưới đây là đoạn code hoàn chỉnh cho phần Server. Nó sử dụng thư viện `socket` và `threading` để xử lý nhiều người dùng cùng lúc.</p>
-
-                <pre>
-import socket
-import threading
-
-# Cấu hình Server
-HOST = '127.0.0.1'
-PORT = 55555
-
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.bind((HOST, PORT))
-server.listen()
-
-print(f"Server đang chạy tại {HOST}:{PORT}")
-
-def handle_client(client):
-    while True:
-        try:
-            msg = client.recv(1024)
-            print(f"Nhận được: {msg.decode('utf8')}")
-        except:
-            client.close()
-            break
-
-while True:
-    client, addr = server.accept()
-    print(f"Kết nối mới từ: {addr}")
-    thread = threading.Thread(target=handle_client, args=(client,))
-    thread.start()
-                </pre>
-
-                <h2 class="article-heading">4. Xử lý Blocking và Non-blocking</h2>
-                <p>Đoạn code trên giải quyết vấn đề Blocking I/O bằng cách sử dụng Multi-threading. Nếu không có Thread, Server sẽ bị "treo" khi chờ tin nhắn của một Client và không thể tiếp nhận người mới.</p>
-                
-                <h2 class="article-heading">5. Tổng kết</h2>
-                <p>Qua bài viết này, bạn đã hiểu được vòng đời cơ bản của một Socket. Hãy thử chạy đoạn code trên, mở 2 cửa sổ terminal để thấy điều kỳ diệu xảy ra nhé!</p>
+            <article class="card">
+                <img src="project3.jpg" alt="OSI vs TCP/IP" class="card-image">
+                <div class="card-content">
+                    <div class="card-meta">THEORY • 15/12/2025</div>
+                    <h3>Mô hình OSI vs TCP/IP: Lý thuyết và Thực tế</h3>
+                    <p>Tại sao trường học dạy OSI 7 tầng nhưng thực tế lại dùng TCP/IP 4 tầng? Cùng tìm hiểu sự thật.</p>
+                    <a href="#" class="card-btn">Đọc chi tiết →</a>
+                </div>
+            </article>
+            
             </div>
-        </div>
-    </div>
-
-    <div id="modal2" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
-            <img src="project2.jpg" class="modal-banner">
-            <div class="modal-body">
-                <div class="article-meta">C++ • 18/12/2025</div>
-                <h1 class="article-title">Xây dựng HTTP Server từ con số 0 (No Framework)</h1>
-                <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
-
-                <p>Thử thách tự viết một Web Server xử lý HTTP Request mà không dùng bất kỳ thư viện hỗ trợ nào như Apache hay Nginx.</p>
-
-                <h2 class="article-heading">1. Cấu trúc một HTTP Request</h2>
-                <p>Trình duyệt gửi lên Server một đoạn văn bản thuần (Plain text) theo quy chuẩn. Nhiệm vụ của chúng ta là phân tích (Parse) đoạn văn bản đó.</p>
-
-                <h2 class="article-heading">2. Code C++ xử lý Socket</h2>
-                <pre>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <iostream>
-#include <unistd.h>
-
-int main() {
-    int server_fd = socket(AF_INET, SOCK_STREAM, 0);
-    // ... (Code rút gọn)
-    char *hello = "HTTP/1.1 200 OK\nContent-Type: text/plain\n\nHello World!";
-    write(new_socket, hello, strlen(hello));
-    return 0;
-}
-                </pre>
-                <p>Đoạn code trên gửi về một Header `HTTP/1.1 200 OK`, báo cho trình duyệt biết yêu cầu đã thành công.</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal3" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
-            <img src="project3.jpg" class="modal-banner">
-            <div class="modal-body">
-                <div class="article-meta">PYTHON • 15/12/2025</div>
-                <h1 class="article-title">Hệ thống truyền tải file dung lượng lớn qua mạng LAN</h1>
-                <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
-
-                <p>Làm sao để gửi một file phim 4GB qua mạng mà không bị lỗi tràn bộ nhớ (RAM)? Câu trả lời là kỹ thuật Chunking (Chia nhỏ).</p>
-
-                <h2 class="article-heading">1. Kỹ thuật Chunking</h2>
-                <p>Thay vì đọc toàn bộ file vào RAM, chúng ta đọc từng đoạn 4096 bytes (4KB) và gửi đi liên tục.</p>
-
-                <h2 class="article-heading">2. Code Client (Sender)</h2>
-                <pre>
-import socket
-import os
-
-SEPARATOR = "<SEPARATOR>"
-BUFFER_SIZE = 4096 
-
-s = socket.socket()
-s.connect(("192.168.1.10", 5001))
-
-# Gửi thông tin file trước
-s.send(f"video.mp4{SEPARATOR}1024000".encode())
-
-# Gửi nội dung file theo từng chunk
-with open("video.mp4", "rb") as f:
-    while True:
-        bytes_read = f.read(BUFFER_SIZE)
-        if not bytes_read: break
-        s.sendall(bytes_read)
-                </pre>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal4" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal4')">&times;</span>
-            <img src="project4.jpg" class="modal-banner">
-            <div class="modal-body">
-                <h1 class="article-title">Multi-threaded Port Scanner</h1>
-                <h2 class="article-heading">1. Tại sao cần Multi-threading?</h2>
-                <p>Quét 65535 cổng mạng một cách tuần tự sẽ mất hàng giờ. Sử dụng đa luồng giúp giảm thời gian xuống còn vài phút.</p>
-                <h2 class="article-heading">2. Code Python</h2>
-                <pre>
-# Code quét cổng sử dụng Queue và Threading
-import socket
-from queue import Queue
-# ...
-                </pre>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal5" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal5')">&times;</span>
-            <img src="project5.jpg" class="modal-banner">
-            <div class="modal-body">
-                <h1 class="article-title">Remote Command Line (Telnet Clone)</h1>
-                <h2 class="article-heading">1. Cơ chế hoạt động</h2>
-                <p>Client gửi chuỗi lệnh -> Server nhận -> Thực thi bằng `subprocess` -> Server gửi kết quả về.</p>
-                <pre>import subprocess...</pre>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal6" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal6')">&times;</span>
-            <img src="project6.jpg" class="modal-banner">
-            <div class="modal-body">
-                <h1 class="article-title">Network Packet Sniffer với Raw Socket</h1>
-                <h2 class="article-heading">1. Raw Socket là gì?</h2>
-                <p>Là loại socket cho phép truy cập trực tiếp vào tầng thấp của giao thức mạng, bỏ qua sự xử lý của hệ điều hành.</p>
-                <pre>socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_IP)</pre>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal7" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal7')">&times;</span>
-            <img src="project7.jpg" class="modal-banner">
-            <div class="modal-body">
-                <h1 class="article-title">Tự xây dựng DNS Resolver</h1>
-                <h2 class="article-heading">1. Giao thức DNS (UDP 53)</h2>
-                <p>Chúng ta sẽ đóng gói thủ công một gói tin DNS Query dưới dạng Hex và gửi tới Google DNS 8.8.8.8.</p>
-                <pre># Code tạo gói tin DNS...</pre>
-            </div>
-        </div>
-    </div>
+    </main>
+    
+    <div style="height: 100px;"></div>
+</body>
+</html>
