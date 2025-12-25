@@ -1,114 +1,66 @@
-/* =========================================
-   STYLE.CSS - BẢN ĐẦY ĐỦ (FULL)
-   (Bao gồm: Layout chung, Header, Grid Project, Modal Blog)
-   ========================================= */
-
-/* --- 1. CẤU HÌNH CHUNG --- */
+/* === style.css - Phiên bản Final cho Khang Blog UI === */
 :root {
     --primary: #4e60ff;       /* Màu xanh chủ đạo */
-    --primary-light: #f0f4ff; /* Màu nền nhạt */
-    --dark: #111827;          /* Màu chữ đen */
-    --gray: #6b7280;          /* Màu chữ xám */
-    --bg-light: #f9fafb;      /* Màu nền trang */
-    --border: #e5e7eb;        /* Màu đường viền */
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    --primary-light: #f0f4ff; /* Màu nền nhạt cho nút/tag */
+    --dark: #1a1a1a;
+    --gray: #666;
+    --light-gray: #f9f9f9;    /* Màu nền trang */
+    --border: #eef2f6;        /* Màu viền thẻ */
+    font-family: 'Inter', sans-serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-    background-color: var(--bg-light);
-    color: var(--dark);
-    line-height: 1.6;
-    padding-top: 80px; /* Chừa chỗ cho thanh menu */
-}
-
+body { background-color: var(--white); color: var(--dark); line-height: 1.6; padding-top: 70px; }
 a { text-decoration: none; color: inherit; transition: 0.3s; }
 ul { list-style: none; }
 img { max-width: 100%; display: block; }
 
-/* --- 2. LAYOUT & CONTAINER --- */
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+/* LAYOUT */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+section { margin-bottom: 80px; }
 
-.section-title {
-    text-align: center;
-    font-size: 32px;
-    font-weight: 800;
-    margin-bottom: 50px;
-    color: var(--dark);
-}
+/* HEADER / MENU */
+header { background: #fff; position: fixed; top: 0; width: 100%; z-index: 1000; border-bottom: 1px solid var(--border); }
+.navbar { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+.logo { font-size: 22px; font-weight: 800; color: var(--primary); }
+.nav-links a { margin-left: 35px; font-size: 15px; font-weight: 600; color: var(--dark); opacity: 0.7; }
+.nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--primary); }
 
-/* --- 3. HEADER (MENU) --- */
-header {
-    background: #fff;
-    position: fixed;
-    top: 0; left: 0; width: 100%;
-    z-index: 1000;
-    border-bottom: 1px solid var(--border);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
+/* CÁC THÀNH PHẦN CHUNG */
+.section-title { text-align: center; font-size: 32px; font-weight: 800; margin-bottom: 50px; color: var(--dark); }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 70px;
-}
+/* GRID SYSTEM */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
 
-.logo {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--primary);
-}
-
-.nav-links a {
-    margin-left: 35px;
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--gray);
-}
-
-.nav-links a:hover, .nav-links a.active {
-    color: var(--primary);
-}
-
-/* --- 4. GRID SYSTEM (DỰ ÁN) --- */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 30px;
-}
-
-/* --- 5. CARD STYLE (THẺ BÀI) --- */
+/* === CARD STYLE (Giao diện thẻ dự án giống mẫu) === */
 .card {
     background: #fff;
     border-radius: 16px;
-    overflow: hidden;
+    overflow: hidden; /* Để ảnh không bị tràn ra ngoài bo góc */
     border: 1px solid var(--border);
     transition: transform 0.3s, box-shadow 0.3s;
-    display: flex; flex-direction: column;
+    display: flex; flex-direction: column; /* Để nút luôn nằm dưới cùng */
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
     border-color: var(--primary-light);
 }
 
+/* Phần ảnh thumbnail phía trên thẻ */
 .card-image {
-    height: 200px;
+    height: 200px; /* Chiều cao cố định cho ảnh */
     width: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Ảnh tự cắt để vừa khung mà không bị méo */
 }
 
+/* Phần nội dung bên dưới ảnh */
 .card-content {
     padding: 25px;
+    flex-grow: 1; /* Đẩy nút xuống đáy */
     display: flex; flex-direction: column;
-    flex-grow: 1;
 }
 
 .card-meta {
@@ -117,158 +69,29 @@ header {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
-.card h3 {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: var(--dark);
-    line-height: 1.4;
-}
+.card h3 { font-size: 20px; margin-bottom: 15px; line-height: 1.4; color: var(--dark); }
+.card p { font-size: 15px; color: var(--gray); margin-bottom: 25px; flex-grow: 1; }
 
-.card p {
-    font-size: 15px;
-    color: var(--gray);
-    margin-bottom: 25px;
-    flex-grow: 1;
-}
-
+/* Nút bấm "Đọc chi tiết" */
 .card-btn {
     display: block;
     width: 100%;
-    padding: 12px;
+    padding: 15px;
     background-color: var(--primary-light);
     color: var(--primary);
     text-align: center;
-    font-weight: 600;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.card-btn:hover {
-    background-color: var(--primary);
-    color: #fff;
-}
-
-/* --- 6. MODAL BLOG (CHI TIẾT BÀI VIẾT) --- */
-.modal {
-    display: none; /* Mặc định ẩn */
-    position: fixed;
-    z-index: 2000;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.6);
-    backdrop-filter: blur(5px); /* Hiệu ứng mờ nền */
-    overflow-y: auto;
-    padding: 20px 0;
-}
-
-.modal-content {
-    background-color: #fff;
-    margin: 20px auto;
-    padding: 0;
-    border-radius: 16px;
-    width: 90%;
-    max-width: 800px;
-    position: relative;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    animation: zoomIn 0.3s ease-out;
-    overflow: hidden;
-}
-
-@keyframes zoomIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-/* Ảnh Banner trong Modal */
-.modal-banner {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-}
-
-/* Nội dung bài viết */
-.modal-body {
-    padding: 40px 50px;
-    font-size: 17px;
-    color: #374151;
-    line-height: 1.8;
-}
-
-.article-meta {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--primary);
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.article-title {
-    font-size: 36px;
-    font-weight: 800;
-    color: #111;
-    line-height: 1.2;
-    margin-bottom: 30px;
-}
-
-/* Các tiêu đề con (H2) có gạch xanh */
-.article-heading {
-    font-size: 24px;
     font-weight: 700;
-    color: #111;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    padding-left: 15px;
-    border-left: 4px solid var(--primary);
-}
-
-.modal-body p { margin-bottom: 20px; }
-.modal-body ul { margin-bottom: 20px; padding-left: 20px; list-style-type: disc; }
-.modal-body li { margin-bottom: 8px; }
-
-/* Khung Code (Dark Mode) */
-pre {
-    background: #1e1e1e;
-    color: #d4d4d4;
-    padding: 20px;
-    border-radius: 8px;
-    overflow-x: auto;
-    font-family: 'Consolas', 'Monaco', monospace;
     font-size: 14px;
-    line-height: 1.5;
-    margin: 30px 0;
-    border: 1px solid #333;
+    border-radius: 12px;
 }
+.card-btn:hover { background-color: var(--primary); color: #fff; }
 
-/* Nút Đóng (X) */
-.close-btn {
-    position: absolute;
-    top: 20px; right: 20px;
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    width: 40px; height: 40px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 40px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: 0.2s;
-    z-index: 10;
-}
-
-.close-btn:hover { background: #000; }
-
-/* --- 7. RESPONSIVE --- */
+/* RESPONSIVE */
 @media (max-width: 768px) {
     .nav-links { display: none; }
-    .grid { grid-template-columns: 1fr; }
-    .modal-banner { height: 200px; }
-    .modal-body { padding: 25px; }
-    .article-title { font-size: 26px; }
+    .grid { grid-template-columns: 1fr; } /* Điện thoại hiển thị 1 cột */
+    .section-title { font-size: 24px; }
 }
