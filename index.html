@@ -4,38 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ - Phạm Gia Huy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
     <header>
         <div class="container navbar">
             <a href="index.html" class="logo">Huy Pham.</a>
             <nav class="nav-links">
-                <a href="index.html" class="active">Home</a> <a href="about.html">About</a>
+                <a href="index.html" class="active">Home</a>
+                <a href="about.html">About</a>
                 <a href="projects.html">Projects</a>
                 <a href="contact.html">Contact</a>
             </nav>
         </div>
     </header>
 
-    <section class="hero" style="min-height: 80vh; display: flex; align-items: center;">
+    <section class="hero" style="padding-top: 100px; padding-bottom: 60px;">
         <div class="container">
-            <img src="avatar.jpg" alt="Phạm Gia Huy" class="avatar">
-            <h1>Xin chào, mình là Phạm Gia Huy </h1>
-            <p>Sinh viên chuyên ngành An Ninh Mangj | Đam mê Backend & Network.</p>
             
-            <div class="tag-container">
+            <img src="https://placehold.co/150x150/e2e8f0/1e293b?text=Huy+Pham" alt="Phạm Gia Huy" class="avatar" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 20px;">
+            
+            <h1 style="font-size: 48px; margin-bottom: 15px; color: #1a1a1a;">Xin chào, mình là Phạm Gia Huy</h1>
+            <p style="font-size: 18px; color: #666; margin-bottom: 25px;">
+                Sinh viên chuyên ngành An Ninh Mạng | Đam mê Backend & Network.
+            </p>
+            
+            <div class="tags-container" style="margin-bottom: 30px; display: flex; gap: 10px; flex-wrap: wrap;">
                 <span class="tag">Python</span>
                 <span class="tag">Network Socket</span>
                 <span class="tag">Cisco Packet Tracer</span>
             </div>
             
-            <div style="margin-top: 30px;">
-                <a href="about.html" class="btn btn-primary">Xem hồ sơ năng lực →</a>
-                <a href="contact.html" class="btn" style="background: white; border: 1px solid #ccc; margin-left: 10px;">Liên hệ</a>
+            <div style="display: flex; gap: 15px;">
+                <a href="about.html" class="card-btn" style="width: auto; padding: 12px 24px; background-color: #4e60ff; color: white;">Xem hồ sơ năng lực →</a>
+                <a href="contact.html" class="card-btn" style="width: auto; padding: 12px 24px; background-color: white; border: 1px solid #ddd; color: #333;">Liên hệ</a>
             </div>
         </div>
     </section>
+
+    <section class="container" style="margin-bottom: 100px;">
+        
+        <h2 class="modern-heading" style="margin-bottom: 30px;">Chứng chỉ Cisco & Network</h2>
+        
+        <div class="grid">
+            
+            <div class="card">
+                <div class="card-content">
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 10px;">Network Basic</h3>
+                    <p style="margin-bottom: 20px; color: #666; font-size: 15px;">
+                        Kiến thức nền tảng về mạng máy tính, các thiết bị mạng và mô hình kết nối cơ bản OSI/TCP-IP.
+                    </p>
+                    <a href="#" class="card-btn" style="background-color: #4e60ff; color: #fff; margin-top: auto;">Xem PDF</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 10px;">Essential 1</h3>
+                    <p style="margin-bottom: 20px; color: #666; font-size: 15px;">
+                        Nhập môn công nghệ thông tin: Phần cứng máy tính, cài đặt phần mềm và xử lý sự cố cơ bản.
+                    </p>
+                    <a href="#" class="card-btn" style="background-color: #4e60ff; color: #fff; margin-top: auto;">Xem PDF</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 10px;">Essential 2</h3>
+                    <p style="margin-bottom: 20px; color: #666; font-size: 15px;">
+                        Nâng cao về hệ điều hành, quản trị hệ thống mạng và các nguyên tắc bảo mật thông tin.
+                    </p>
+                    <a href="#" class="card-btn" style="background-color: #4e60ff; color: #fff; margin-top: auto;">Xem PDF</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
 </body>
 </html>
