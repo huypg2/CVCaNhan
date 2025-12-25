@@ -3,153 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Cá Nhân - Huy Pham</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
-    
-    <style>
-        /* 1. CÀI ĐẶT CHUNG */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Montserrat', sans-serif;
-            color: #333;
-            line-height: 1.6;
-            overflow-x: hidden; /* Tránh thanh cuộn ngang */
-        }
-
-        /* 2. THANH MENU (NAVIGATION) */
-        nav {
-            display: flex;
-            justify-content: flex-end; /* Đẩy menu sang phải */
-            padding: 30px 50px;
-            position: fixed; /* Ghim menu lên đầu */
-            width: 100%;
-            background: white;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #555;
-            margin-left: 30px;
-            font-size: 14px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #000;
-            font-weight: bold;
-        }
-
-        /* 3. PHẦN CHÍNH (HERO SECTION) */
-        .hero-container {
-            display: flex;
-            height: 100vh; /* Chiều cao bằng 100% màn hình */
-            align-items: center; /* Căn giữa theo chiều dọc */
-            padding-top: 60px; /* Chừa chỗ cho menu */
-        }
-
-        /* Cột bên trái: Chữ */
-        .hero-text {
-            width: 50%;
-            padding-left: 10%; /* Canh lề trái */
-            padding-right: 50px;
-        }
-
-        .my-name {
-            font-size: 18px;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            display: block;
-            color: #555;
-        }
-
-        .my-name span {
-            font-weight: 300; /* Làm chữ mỏng đi cho nghệ thuật */
-        }
-
-        .slogan {
-            font-size: 60px; /* Kích thước chữ to */
-            font-weight: 900; /* Chữ siêu đậm */
-            line-height: 1.1;
-            text-transform: uppercase;
-            color: #222;
-        }
-
-        .highlight-bg {
-            background-color: #333;
-            color: white;
-            padding: 0 10px; /* Tạo hiệu ứng nền đen chữ trắng */
-        }
-
-        /* Cột bên phải: Ảnh */
-        .hero-image {
-            width: 50%;
-            height: 100%;
-            /* Thay thế hình ảnh ở đây */
-            background-image: url('avatar.jpg'); 
-            background-size: cover; /* Ảnh phủ kín khung */
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        /* 4. RESPONSIVE (Làm đẹp trên điện thoại) */
-        @media (max-width: 768px) {
-            .hero-container {
-                flex-direction: column-reverse; /* Đảo ngược: ảnh lên trên, chữ xuống dưới */
-                height: auto;
-            }
-            .hero-text, .hero-image {
-                width: 100%;
-            }
-            .hero-image {
-                height: 400px;
-            }
-            .hero-text {
-                padding: 50px 20px;
-            }
-            .slogan {
-                font-size: 40px;
-            }
-            nav {
-                justify-content: center;
-                padding: 15px;
-            }
-        }
-    </style>
+    <title>Phạm Gia Huy - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Resume</a>
-        <a href="#">Portfolio</a>
-        <a href="#">Contact</a>
-    </nav>
-
-    <div class="hero-container">
-        <div class="hero-text">
-            <span class="my-name">HUY PHAM //</span>
-            <h1 class="slogan">
-                Work Hard<br>
-                In Silence<br>
-                Let <span class="highlight-bg">Success</span><br>
-                Make Noise
-            </h1>
+    <header>
+        <div class="container navbar">
+            <a href="#" class="logo">Huy Pham.</a>
+            <nav class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
         </div>
+    </header>
 
-        <div class="hero-image">
+    <section class="hero">
+        <div class="container">
+            <img src="avatar.jpg" alt="Phạm Gia Huy" class="avatar">
+            <h1>Phạm Gia Huy</h1>
+            <p>Chào mừng đến với Portfolio của mình. Mình là sinh viên chuyên ngành Công Nghệ Phần Mềm với niềm đam mê lớn về Lập trình Backend và Hệ thống mạng.</p>
+            
+            <div class="tag-container">
+                <span class="tag">Python / C++</span>
+                <span class="tag">Network Socket</span>
+                <span class="tag">Cisco Packet Tracer</span>
+                <span class="tag">HTML / CSS / JS</span>
             </div>
+            
+            <br>
+            <a href="#contact" class="btn btn-primary">Kết nối với mình →</a>
+        </div>
+    </section>
+
+    <div class="container">
+        
+        <section id="about">
+            <h2 class="section-title">Chứng chỉ & Học vấn</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Network Basic</h3>
+                    <p>Kiến thức nền tảng về mạng máy tính, các thiết bị mạng và mô hình kết nối cơ bản.</p>
+                    <a href="#" class="btn">Xem Chứng Chỉ</a>
+                </div>
+                <div class="card">
+                    <h3>IT Essentials</h3>
+                    <p>Nhập môn công nghệ thông tin: Phần cứng máy tính, cài đặt phần mềm và xử lý sự cố.</p>
+                    <a href="#" class="btn">Xem Chứng Chỉ</a>
+                </div>
+                <div class="card">
+                    <h3>CCNA: Switching & Routing</h3>
+                    <p>Nâng cao về hệ điều hành, quản trị hệ thống mạng và cấu hình Router/Switch Cisco.</p>
+                    <a href="#" class="btn">Xem Chứng Chỉ</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title">Dự án & Kiến thức chia sẻ</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-meta">CODE • 20/12/2025</div>
+                    <h3>Socket Programming với Python</h3>
+                    <p>Hướng dẫn từ A-Z cách tạo mô hình Client-Server đầu tiên sử dụng thư viện socket.</p>
+                    <a href="#" class="btn">Đọc chi tiết →</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-meta">TOOLS • 18/12/2025</div>
+                    <h3>Phân tích gói tin với Wireshark</h3>
+                    <p>Học cách sử dụng Wireshark để bắt gói tin, debug lỗi mạng và hiểu sâu về giao thức TCP/IP.</p>
+                    <a href="#" class="btn">Đọc chi tiết →</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-meta">THEORY • 15/12/2025</div>
+                    <h3>Mô hình OSI vs TCP/IP</h3>
+                    <p>Tại sao trường học dạy OSI 7 tầng nhưng thực tế lại dùng TCP/IP 4 tầng? Cùng tìm hiểu.</p>
+                    <a href="#" class="btn">Đọc chi tiết →</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" style="text-align: center; margin-bottom: 100px;">
+            <h2 class="section-title" style="border: none; padding: 0;">Kết nối với Huy</h2>
+            <p style="color: #666; margin-bottom: 30px;">Bạn có thể tìm thấy mình ở các kênh dưới đây. Rất vui được trao đổi!</p>
+            
+            <div class="grid" style="max-width: 800px; margin: 0 auto;">
+                <div class="card" style="align-items: center; text-align: center;">
+                    <h3 style="color: #1877F2;">Facebook</h3>
+                    <p>Theo dõi hoạt động cá nhân</p>
+                    <a href="#" class="btn" style="background: #1877F2; color: white;">Truy cập Profile</a>
+                </div>
+
+                <div class="card" style="align-items: center; text-align: center;">
+                    <h3 style="color: #000;">GitHub</h3>
+                    <p>Xem source code các dự án</p>
+                    <a href="#" class="btn" style="background: #000; color: white;">Xem Repos</a>
+                </div>
+            </div>
+        </section>
+
     </div>
 
 </body>
