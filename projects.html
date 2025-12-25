@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dự án - Phạm Gia Huy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,35 +14,50 @@
             <nav class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
-                <a href="projects.html" class="active">Projects</a> <a href="contact.html">Contact</a>
+                <a href="projects.html" class="active">Projects</a>
+                <a href="contact.html">Contact</a>
             </nav>
         </div>
     </header>
 
-    <div class="container" style="margin-top: 40px;">
-        <h2 class="section-title">Dự án cá nhân & Bài viết</h2>
+    <main class="container" style="margin-top: 60px;">
+        <h1 class="section-title">Kiến Thức Lập Trình Mạng</h1>
+
         <div class="grid">
-            <div class="card">
-                <div class="card-meta">PYTHON • SOCKET</div>
-                <h3>Chat App Client-Server</h3>
-                <p>Ứng dụng chat LAN đơn giản sử dụng Python Socket Multi-threading.</p>
-                <a href="#" class="btn">Xem Source Code</a>
-            </div>
+            
+            <article class="card">
+                <img src="project1.jpg" alt="Socket Programming" class="card-image">
+                <div class="card-content">
+                    <div class="card-meta">CODE • 20/12/2025</div>
+                    <h3>Socket Programming cơ bản với Python: Hướng dẫn từ A-Z</h3>
+                    <p>Khám phá cách tạo mô hình Client-Server đầu tiên của bạn sử dụng thư viện socket trong Python.</p>
+                    <a href="#" class="card-btn">Đọc chi tiết →</a>
+                </div>
+            </article>
 
-            <div class="card">
-                <div class="card-meta">NETWORK • TOOL</div>
-                <h3>Phân tích gói tin Wireshark</h3>
-                <p>Báo cáo phân tích quá trình bắt tay 3 bước (3-way handshake) của giao thức TCP.</p>
-                <a href="#" class="btn">Đọc báo cáo</a>
-            </div>
+            <article class="card">
+                <img src="project2.jpg" alt="Wireshark Analysis" class="card-image">
+                <div class="card-content">
+                    <div class="card-meta">TOOLS • 18/12/2025</div>
+                    <h3>Phân tích gói tin với Wireshark: Soi từng bit dữ liệu</h3>
+                    <p>Học cách sử dụng Wireshark để bắt gói tin, debug lỗi mạng và hiểu sâu về giao thức TCP/IP.</p>
+                    <a href="#" class="card-btn">Đọc chi tiết →</a>
+                </div>
+            </article>
 
-            <div class="card">
-                <div class="card-meta">WEB DEV</div>
-                <h3>Portfolio Cá Nhân</h3>
-                <p>Website tĩnh được xây dựng bằng HTML/CSS và host trên GitHub Pages.</p>
-                <a href="#" class="btn">Xem Repo</a>
+            <article class="card">
+                <img src="project3.jpg" alt="OSI vs TCP/IP" class="card-image">
+                <div class="card-content">
+                    <div class="card-meta">THEORY • 15/12/2025</div>
+                    <h3>Mô hình OSI vs TCP/IP: Lý thuyết và Thực tế</h3>
+                    <p>Tại sao trường học dạy OSI 7 tầng nhưng thực tế lại dùng TCP/IP 4 tầng? Cùng tìm hiểu sự thật.</p>
+                    <a href="#" class="card-btn">Đọc chi tiết →</a>
+                </div>
+            </article>
+            
             </div>
-        </div>
-    </div>
+    </main>
+    
+    <div style="height: 100px;"></div>
 </body>
 </html>
