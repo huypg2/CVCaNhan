@@ -1,97 +1,58 @@
-/* === style.css - Phiên bản Final cho Khang Blog UI === */
-:root {
-    --primary: #4e60ff;       /* Màu xanh chủ đạo */
-    --primary-light: #f0f4ff; /* Màu nền nhạt cho nút/tag */
-    --dark: #1a1a1a;
-    --gray: #666;
-    --light-gray: #f9f9f9;    /* Màu nền trang */
-    --border: #eef2f6;        /* Màu viền thẻ */
-    font-family: 'Inter', sans-serif;
-}
+/* === THÊM VÀO CUỐI FILE style.css === */
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body { background-color: var(--white); color: var(--dark); line-height: 1.6; padding-top: 70px; }
-a { text-decoration: none; color: inherit; transition: 0.3s; }
-ul { list-style: none; }
-img { max-width: 100%; display: block; }
-
-/* LAYOUT */
-.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-section { margin-bottom: 80px; }
-
-/* HEADER / MENU */
-header { background: #fff; position: fixed; top: 0; width: 100%; z-index: 1000; border-bottom: 1px solid var(--border); }
-.navbar { display: flex; justify-content: space-between; align-items: center; height: 70px; }
-.logo { font-size: 22px; font-weight: 800; color: var(--primary); }
-.nav-links a { margin-left: 35px; font-size: 15px; font-weight: 600; color: var(--dark); opacity: 0.7; }
-.nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--primary); }
-
-/* CÁC THÀNH PHẦN CHUNG */
-.section-title { text-align: center; font-size: 32px; font-weight: 800; margin-bottom: 50px; color: var(--dark); }
-
-/* GRID SYSTEM */
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
-
-/* === CARD STYLE (Giao diện thẻ dự án giống mẫu) === */
-.card {
-    background: #fff;
-    border-radius: 16px;
-    overflow: hidden; /* Để ảnh không bị tràn ra ngoài bo góc */
-    border: 1px solid var(--border);
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: flex; flex-direction: column; /* Để nút luôn nằm dưới cùng */
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-    border-color: var(--primary-light);
-}
-
-/* Phần ảnh thumbnail phía trên thẻ */
-.card-image {
-    height: 200px; /* Chiều cao cố định cho ảnh */
+/* Nền đen mờ che phía sau */
+.modal {
+    display: none; /* Mặc định ẩn đi */
+    position: fixed;
+    z-index: 2000; /* Nằm trên cùng */
+    left: 0;
+    top: 0;
     width: 100%;
-    object-fit: cover; /* Ảnh tự cắt để vừa khung mà không bị méo */
+    height: 100%;
+    background-color: rgba(0,0,0,0.8); /* Màu đen độ mờ 80% */
+    overflow: auto; /* Cho phép cuộn nếu nội dung dài */
+    padding-top: 50px;
 }
 
-/* Phần nội dung bên dưới ảnh */
-.card-content {
-    padding: 25px;
-    flex-grow: 1; /* Đẩy nút xuống đáy */
-    display: flex; flex-direction: column;
-}
-
-.card-meta {
-    font-size: 12px;
-    color: var(--primary);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
-}
-
-.card h3 { font-size: 20px; margin-bottom: 15px; line-height: 1.4; color: var(--dark); }
-.card p { font-size: 15px; color: var(--gray); margin-bottom: 25px; flex-grow: 1; }
-
-/* Nút bấm "Đọc chi tiết" */
-.card-btn {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    background-color: var(--primary-light);
-    color: var(--primary);
-    text-align: center;
-    font-weight: 700;
-    font-size: 14px;
+/* Hộp nội dung trắng ở giữa */
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 40px;
     border-radius: 12px;
+    width: 80%;
+    max-width: 900px;
+    position: relative;
+    animation: zoomIn 0.3s; /* Hiệu ứng phóng to */
 }
-.card-btn:hover { background-color: var(--primary); color: #fff; }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .nav-links { display: none; }
-    .grid { grid-template-columns: 1fr; } /* Điện thoại hiển thị 1 cột */
-    .section-title { font-size: 24px; }
+/* Nút đóng (Dấu X) */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #aaa;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover { color: #000; }
+
+/* Hiệu ứng Zoom khi mở */
+@keyframes zoomIn {
+    from {transform: scale(0.8); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+
+/* Code block trong modal */
+pre {
+    background: #282c34;
+    color: #abb2bf;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Consolas', monospace;
+    margin-top: 20px;
 }
