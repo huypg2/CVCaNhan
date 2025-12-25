@@ -20,7 +20,8 @@
 
         <h1 style="font-size: 36px; margin-bottom: 10px;">Multi-threaded Port Scanner</h1>
         <div style="color: #4e60ff; font-weight: 600; margin-bottom: 30px;">PYTHON • SECURITY • TOOL</div>
-        <img src="project4.jpg" alt="Project Banner" style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 40px;">
+        
+        <img src="https://placehold.co/800x400/c0392b/ffffff?text=Port+Scanner+Terminal" alt="Project Banner" style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 40px;">
 
         <h2 class="section-title" style="text-align: left; margin-bottom: 20px; font-size: 24px;">1. Giới thiệu</h2>
         <p style="margin-bottom: 20px;">Tool kiểm tra bảo mật mạng, quét một dải IP hoặc một máy chủ cụ thể để xem cổng nào đang mở (Open Port). Sử dụng đa luồng để tăng tốc độ quét từ vài phút xuống vài giây.</p>
@@ -38,7 +39,7 @@ open_ports = []
 def portscan(port):
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(0.5) # Timeout nhanh để không đợi lâu
+        sock.settimeout(0.5) 
         result = sock.connect_ex((target, port))
         if result == 0:
             return True
@@ -55,7 +56,6 @@ def worker():
             open_ports.append(port)
         queue.task_done()
 
-# Tạo 100 luồng để quét
 for port in range(1, 1024):
     queue.put(port)
 
