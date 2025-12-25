@@ -1,63 +1,97 @@
-/* === style.css - Phiên bản Đầy Đủ === */
+/* === style.css - Phiên bản Final cho Khang Blog UI === */
 :root {
-    --primary: #4e60ff;     /* Màu xanh chủ đạo */
-    --primary-dark: #3a4bcf;
+    --primary: #4e60ff;       /* Màu xanh chủ đạo */
+    --primary-light: #f0f4ff; /* Màu nền nhạt cho nút/tag */
     --dark: #1a1a1a;
     --gray: #666;
-    --light: #f4f7f6;       /* Màu nền xám nhạt */
-    --white: #ffffff;
-    --border: #e1e4e8;
+    --light-gray: #f9f9f9;    /* Màu nền trang */
+    --border: #eef2f6;        /* Màu viền thẻ */
+    font-family: 'Inter', sans-serif;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-body { background-color: var(--light); color: var(--dark); line-height: 1.6; padding-top: 70px; }
-a { text-decoration: none; color: inherit; }
+body { background-color: var(--white); color: var(--dark); line-height: 1.6; padding-top: 70px; }
+a { text-decoration: none; color: inherit; transition: 0.3s; }
 ul { list-style: none; }
+img { max-width: 100%; display: block; }
 
-/* LAYOUT CHUNG */
+/* LAYOUT */
 .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+section { margin-bottom: 80px; }
 
 /* HEADER / MENU */
-header { background: var(--white); position: fixed; top: 0; width: 100%; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+header { background: #fff; position: fixed; top: 0; width: 100%; z-index: 1000; border-bottom: 1px solid var(--border); }
 .navbar { display: flex; justify-content: space-between; align-items: center; height: 70px; }
-.logo { font-size: 20px; font-weight: 700; color: var(--primary); }
-.nav-links a { margin-left: 30px; font-size: 15px; font-weight: 500; color: var(--gray); transition: 0.3s; }
-.nav-links a:hover, .nav-links a.active { color: var(--primary); }
+.logo { font-size: 22px; font-weight: 800; color: var(--primary); }
+.nav-links a { margin-left: 35px; font-size: 15px; font-weight: 600; color: var(--dark); opacity: 0.7; }
+.nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--primary); }
 
-/* HERO SECTION (Phần giới thiệu) */
-.hero { text-align: center; padding: 80px 0 60px; background: var(--white); margin-bottom: 40px; }
-.avatar { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(78, 96, 255, 0.2); }
-.hero h1 { font-size: 32px; margin-bottom: 15px; color: var(--dark); }
-.hero p { max-width: 600px; margin: 0 auto 25px; color: var(--gray); }
+/* CÁC THÀNH PHẦN CHUNG */
+.section-title { text-align: center; font-size: 32px; font-weight: 800; margin-bottom: 50px; color: var(--dark); }
 
-/* CÁC PHẦN NỘI DUNG (SECTION) */
-section { margin-bottom: 60px; }
-.section-title { font-size: 24px; font-weight: 700; margin-bottom: 30px; padding-left: 15px; border-left: 4px solid var(--primary); color: var(--dark); }
+/* GRID SYSTEM */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
 
-/* GRID SYSTEM (Chia cột cho các thẻ) */
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+/* === CARD STYLE (Giao diện thẻ dự án giống mẫu) === */
+.card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden; /* Để ảnh không bị tràn ra ngoài bo góc */
+    border: 1px solid var(--border);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex; flex-direction: column; /* Để nút luôn nằm dưới cùng */
+}
 
-/* CARD STYLE (Giao diện ô vuông giống mẫu) */
-.card { background: var(--white); padding: 30px; border-radius: 12px; border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
-.card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-color: var(--primary); }
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    border-color: var(--primary-light);
+}
 
-.card h3 { font-size: 18px; margin-bottom: 10px; color: var(--dark); }
-.card p { font-size: 14px; color: var(--gray); margin-bottom: 20px; flex-grow: 1; }
-.card-meta { font-size: 12px; color: #999; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+/* Phần ảnh thumbnail phía trên thẻ */
+.card-image {
+    height: 200px; /* Chiều cao cố định cho ảnh */
+    width: 100%;
+    object-fit: cover; /* Ảnh tự cắt để vừa khung mà không bị méo */
+}
 
-/* BUTTONS & TAGS */
-.btn { display: inline-block; padding: 10px 20px; background: #ebf0ff; color: var(--primary); border-radius: 6px; font-size: 14px; font-weight: 600; text-align: center; transition: 0.3s; }
-.btn:hover { background: var(--primary); color: var(--white); }
-.btn-primary { background: var(--primary); color: var(--white); padding: 12px 30px; border-radius: 30px; }
-.btn-primary:hover { background: var(--primary-dark); }
+/* Phần nội dung bên dưới ảnh */
+.card-content {
+    padding: 25px;
+    flex-grow: 1; /* Đẩy nút xuống đáy */
+    display: flex; flex-direction: column;
+}
 
-/* TAGS KỸ NĂNG */
-.tag-container { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-.tag { background: #ebf0ff; color: var(--primary); padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; }
+.card-meta {
+    font-size: 12px;
+    color: var(--primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.card h3 { font-size: 20px; margin-bottom: 15px; line-height: 1.4; color: var(--dark); }
+.card p { font-size: 15px; color: var(--gray); margin-bottom: 25px; flex-grow: 1; }
+
+/* Nút bấm "Đọc chi tiết" */
+.card-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-light);
+    color: var(--primary);
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 12px;
+}
+.card-btn:hover { background-color: var(--primary); color: #fff; }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    .nav-links { display: none; } /* Ẩn menu trên mobile cho gọn */
-    .hero h1 { font-size: 24px; }
+    .nav-links { display: none; }
+    .grid { grid-template-columns: 1fr; } /* Điện thoại hiển thị 1 cột */
+    .section-title { font-size: 24px; }
 }
